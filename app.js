@@ -5,7 +5,9 @@ import {fileURLToPath} from "url";
 
 // custom_modules
 import {members}  from "./config/userConfig.js";
-const PORT = process.env.PORT;
+import { logger } from "./middleware/logger.js";
+
+const PORT = process.env.PORT || 7070;
 
 // file path
 const __filename = fileURLToPath(import.meta.url);
@@ -13,6 +15,9 @@ const __dirname = path.dirname(__filename);
 
 // initializing express
 const app = express();
+
+// initializing middleware
+app.use(logger);
 
 // creating endpoints 
 app.get("/api/members", (req,res) =>{
