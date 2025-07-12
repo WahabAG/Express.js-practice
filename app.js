@@ -20,8 +20,19 @@ const app = express();
 app.use(logger);
 
 // creating endpoints 
+// all members get
 app.get("/api/members", (req,res) =>{
     res.json(members);
+});
+
+// single member get
+app.get("/api/members/:id", (req, res) => {
+    const found = members.some(member => member.id === parseInt(req.params.id));
+    if (found) {
+        res.json(members.filter(member => member.id === parseInt(req.params.id)));  // parseInt is used to convert the req.params from string to a number  as the param is always read as string
+    } else{
+        res.status(404).send("Member NOT FOIUND");
+    }
 });
 
 // ... setting static folder
