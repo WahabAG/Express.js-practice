@@ -19,6 +19,11 @@ const app = express();
 // initializing middleware
 app.use(logger);
 
+// initializing body parser middleware
+// instead of 3rd party module express now has biult in body parser
+app.use(express.json());
+app.use(express.urlencoded({extended : false}));
+
 // creating endpoints 
 
 // ... setting static folder
