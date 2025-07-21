@@ -11,11 +11,11 @@ router.get("/", (req,res) =>{
 
 // single member get
 router.get("/:id", (req, res) => {
-    const found = members.some(member => member.id === parseInt(req.params.id));
+    const found = members.some(member => member.id === parseInt(req.params.id)); // cheking if id exists
     if (found) {
         res.json(members.filter(member => member.id === parseInt(req.params.id)));  // parseInt is used to convert the req.params from string to a number  as the param is always sent as string
     } else{
-        res.status(404).send(`Member with the id ${req.params.id} does not Exist`);
+        res.status(404).send(`Member with the id ${req.params.id} does not Exist`); // do this if id does not exist
     }
 });
 
@@ -34,4 +34,27 @@ router.post("/", (req, res) =>{
 
     members.push(newMember);
     res.json({msg: "New Members Created Successfully", members});
+});
+
+// updating already existing members
+router.put("/:id", (req, res) => {
+    const found = members.some(member => member.id === parseInt(req.params.id));
+    if (found) {
+        // runing this if id is found
+        const updMember = req.body;
+        members.forEach(member => {
+            if(member.id === parseInt(req.params.id)){
+                member.name = updMember.name ? updMember.name : member.name;
+                member.email = updMember.email ? updMember.email : member.email;
+                member.status = updMember.status ? updMember.name : member.status;
+
+                res.json({msg:"Member Updated Successfuly", member});
+            }else{
+                    res.json({msg:"ID DOES NOT EXIST"});
+
+            }
+        });
+    } else{
+        res.status(404).send(`Member with the id ${req.params.id} does not Exist`);
+    }
 });

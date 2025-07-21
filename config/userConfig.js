@@ -1,28 +1,28 @@
 import { v4 as uuidv4 } from "uuid";
 export const members = [
     {
-        id : uuidv4(),
+        id : 1,
         name : "John Doe",
         email: "JohnD@gmail.com",
         status : "active"
     },
 
     {
-        id : uuidv4(),
+        id : 2,
         name : "Jane Doe",
         email: "JaneD@gmail.com",
         status : "active"
     },
 
     {
-        id : uuidv4(),
+        id : 3,
         name : "Jack Doe",
         email: "JackD@gmail.com",
         status : "active"
     },
 
     {
-        id : uuidv4(),
+        id : 4,
         name : "Jill Doe",
         email: "JohnD@gmail.com",
         status : "inactive"
