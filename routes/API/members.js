@@ -58,3 +58,14 @@ router.put("/:id", (req, res) => {
         res.status(404).send(`Member with the id ${req.params.id} does not Exist`);
     }
 });
+
+// deleting a user
+router.delete("/:id", (req, res) => {
+    const found = members.some(member => member.id === parseInt(req.params.id)); // cheking if id exists
+    if (found) {
+
+        res.json({msg: `Member with id ${req.params.id} has been DELETED`, members: members.filter(member => member.id !== parseInt(req.params.id))});  // parseInt is used to convert the req.params from string to a number  as the param is always sent as string
+    } else{
+        res.status(404).send(`Member with the id ${req.params.id} does not Exist`); // do this if id does not exist
+    }
+});
