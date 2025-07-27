@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Menbers App - Home</title>
+</head>
+<body>
+<form action="/api/members" method="POST">
+<div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" name="name" class="form-control">
+</div>
+<div class="form-group">
+    <label for="email">E-Mail</label>
+    <input type="email" name="email" class="form-control">
+</div>
+<div class="form-group mt-4">
+    <input type="radio" id="Active" name="states" value="Active">
+    <label for="Active">Active</label><br>
+    <input type="radio" id="Inactive" name="status" value="Inactive">
+    <label for="Inactive">Inactive</label><br>
+</div>
+
+<input type="submit" value="ADD MEMBER" class="btn btn-primary btn-block">
+</form>
+
+
+<h2 class="text-center mb-3"> {{title}}</h2>
+<h4>Members</h4>
+<ul class="list-group">
+    {{#each members}}
+    <li class="list-group-item">{{this.name}}: {{this.email}} <br> {{this.status}}</li>
+    {{/each}}
+</ul>
+
+<a href="/api/members" class="btn btn-dark mt-4">SEE JSON</a>
+</body>
+</html>

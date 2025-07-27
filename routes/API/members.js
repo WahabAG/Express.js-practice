@@ -33,7 +33,8 @@ router.post("/", (req, res) =>{
     }
 
     members.push(newMember);
-    res.json({msg: "New Members Created Successfully", members});
+    //res.redirect("/");  // use this on the rendered page this will return to th main page with the new member
+    res.json({msg: "New Members Created Successfully", members}); // this returns json
 });
 
 // updating already existing members

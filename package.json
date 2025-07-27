@@ -13,6 +13,7 @@
   "description": "A practice project for express.js framework",
   "dependencies": {
     "express": "^5.1.0",
+    "express-handlebars": "^8.0.2",
     "moment": "^2.30.1",
     "nodemon": "^3.1.10",
     "uuid": "^11.1.0"
